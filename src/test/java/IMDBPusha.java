@@ -42,8 +42,11 @@ public class IMDBPusha
         driver.findElement(By.id("searchInput")).sendKeys("Pushpa: The Rise",Keys.ENTER);
         WebElement title = driver.findElement(By.xpath("//i[text()='Pushpa: The Rise'][1]"));
         System.out.println(title.getText());
-        WebElement e= driver.findElement(By.linkText("India"));
+        WebElement releaseDate = driver.findElement(By.xpath("//div[@class='plainlist']//li//child::span//parent::li"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",releaseDate);
+        System.out.println(releaseDate.getText());
+        WebElement e= driver.findElement(By.linkText("India"));
         js.executeScript("arguments[0].scrollIntoView(true);",e);
         e.click();
 
